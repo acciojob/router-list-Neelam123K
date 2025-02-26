@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import './../styles/App.css';
+import "./../styles/App.css";
 
 const items = [
   { id: "1", name: "Item 1", description: "This is the first item." },
   { id: "2", name: "Item 2", description: "This is the second item." },
-  { id: "3", name: "Item 3", description: "This is the third item." }
+  { id: "3", name: "Item 3", description: "This is the third item." },
 ];
 
 const ItemList = () => {
@@ -26,8 +26,9 @@ const ItemList = () => {
 
 const ItemDetail = () => {
   const { id } = useParams();
-  const itemId = Number(id); // Convert id to a number
-  const item = items.find((item) => item.id === itemId); // Use the converted id to find the item
+  console.log(typeof id);
+  const itemId = id; // Convert id to a number
+  const item = items.find((item) => item.id == itemId); // Use the converted id to find the item
 
   if (!item) return <h2>Item not found</h2>;
 
@@ -43,12 +44,10 @@ const ItemDetail = () => {
 const App = () => {
   return (
     <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<ItemList />} />
-          <Route path="/item/:id" element={<ItemDetail />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<ItemList />} />
+        <Route path="/item/:id" element={<ItemDetail />} />
+      </Routes>
     </Router>
   );
 };
