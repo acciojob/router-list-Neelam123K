@@ -36,7 +36,6 @@ const ItemDetail = () => {
     <div>
       <h1>{item.name}</h1>
       <p>{item.description}</p>
-      <Link to="/">Back to List</Link>
     </div>
   );
 };
